@@ -40,7 +40,7 @@ function verficarInfos(obj){
     obj.data = prompt("Qual a data de nascimento do paciente?");
     obj.endereco = prompt("Qual o endereço do paciente?");
     obj.obs = prompt("Observações:");
-    if (obj.nome == "" || obj.data == "" || obj.endereco == "") {
+    if (obj.nome == ("" || null) || obj.data == ("" || null) || obj.endereco == ("" || null)) {
         alert("Insira todos os dados!");
         return false
     }else{
