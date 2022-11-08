@@ -29,13 +29,18 @@ const pilha = new Stack();
 
 let cod = 0
 
+function mostrarDados(paciente){
+    const dadosPaciente = `\nCódigo: ${cod}\nNome: ${paciente.nome}\nData de nascimento: ${paciente.data}\nEndereço: ${paciente.endereco}\nObservações: ${paciente.obs}`;
+    alert(dadosPaciente);
+}
+
 btnCadastrar.addEventListener("click",()=>{
     const objPaciente = {}
 
-    for(let z=0; z<= pilha.items.length; z++){
+    for(let z = 0; z <= pilha.items.length; z++){
         cod = z
     }
-    
+
     objPaciente.cod = cod
     objPaciente.nome = prompt("Qual o nome do paciente?") 
     objPaciente.data = prompt("Qual a data de nascimento do paciente?")
@@ -46,9 +51,18 @@ btnCadastrar.addEventListener("click",()=>{
 
         alert("Insira todos os dados!")
     }else{
-        const dadosPaciente = `NOVO PACIENTE CADASTRADO!\nCódigo: ${cod}\nNome: ${objPaciente.nome}\nData de nascimento: ${objPaciente.data}\nEndereço: ${objPaciente.endereco}\nObservações: ${objPaciente.obs}`;
-        alert(dadosPaciente);
+        mostrarDados(objPaciente);
 
         pilha.push(objPaciente);
+        //console.log(pilha.items[cod])
+    }
+})
+
+btnListar.addEventListener("click",()=>{
+    if (pilha.isEmpty()){
+        alert("Nenhum paciente cadastrado... :/")
+    }else{
+        const codPaciente = prompt("Insira o código do paciente:");
+        mostrarDados(pilha.items[codPaciente]);
     }
 })
