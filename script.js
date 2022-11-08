@@ -25,7 +25,7 @@ class Stack {
     }
 }
 
-const pilha = new Stack();
+const listaDePacientes = new Stack();
 
 let cod = 0
 
@@ -38,7 +38,7 @@ function mostrarDados(paciente){
 btnCadastrar.addEventListener("click",()=>{
     const objPaciente = {}
 
-    for(let z = 0; z <= pilha.items.length; z++){
+    for(let z = 0; z <= listaDePacientes.items.length; z++){
         cod = z
     }
 
@@ -54,36 +54,60 @@ btnCadastrar.addEventListener("click",()=>{
     }else{
         mostrarDados(objPaciente);
 
-        pilha.push(objPaciente);
-        //console.log(pilha.items[cod])
+        listaDePacientes.push(objPaciente);
+        //console.log(listaDePacientes.items[cod])
+    }
+})
+
+//*segundo botão
+btnEditar.addEventListener("click", ()=>{
+    if(!listaDePacientes.isEmpty()){
+
+        const codPaciente = prompt("Insira o código do paciente para edita-lo:");
+        mostrarDados(listaDePacientes.items[codPaciente]);
+        const confirma = confirm("Quer alterar os dados do paciente?")
+        if(confirma){
+            const paciente = listaDePacientes.items[codPaciente];
+            
+            paciente.nome = prompt("Qual o nome do paciente?")
+            paciente.data = prompt("Qual a data de nascimento do paciente?");
+            paciente.endereco = prompt("Qual o endereço do paciente?");
+            paciente.obs = prompt("Observações:");
+            if(paciente.nome == '' || paciente.data == '' || paciente.endereco == ''){
+
+                alert("Insira todos os dados!")
+            }else{
+                mostrarDados(paciente);
+            }
+        }
+    }else{
+        alert("Nenhum paciente cadastrado... :/");
     }
 })
 
 //*terceiro botão
 btnListar.addEventListener("click",()=>{
-    if (pilha.isEmpty()){
+    if (listaDePacientes.isEmpty()){
         alert("Nenhum paciente cadastrado... :/")
     }else{
-        for (let z = 0; z <= pilha.items.length; z++){
-            mostrarDados(pilha.items[z]);
+        for (let z = 0; z <= listaDePacientes.items.length; z++){
+            mostrarDados(listaDePacientes.items[z]);
         }
     }
 })
 
 //*quarto botão
 btnExcluir.addEventListener("click", ()=> {
-    if(!pilha.isEmpty()){
+    if(!listaDePacientes.isEmpty()){
         
         const codPaciente = prompt("Insira o código do paciente para excluí-lo:");
-        mostrarDados(pilha.items[codPaciente]);
+        mostrarDados(listaDePacientes.items[codPaciente]);
         const confirmar = confirm(`Você tem certeza que quer excluir esse paciente?`)
     
         if(confirmar){
-            let index = pilha.items.indexOf(codPaciente);
-            pilha.items.splice(index,1)
-            alert("excluido")
-        }else{
-            alert("n excluido");
+            let index = listaDePacientes.items.indexOf(codPaciente);
+            listaDePacientes.items.splice(index,1)
+            alert(`Paciente ${codPaciente} excluído!`)
         }
 
     }else{
