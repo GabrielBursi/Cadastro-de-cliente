@@ -30,7 +30,7 @@ const listaDePacientes = new Stack();
 let cod = 0
 
 function mostrarDados(paciente){
-    const dadosPaciente = `\nCódigo: ${cod}\nNome: ${paciente.nome}\nData de nascimento: ${paciente.data}\nEndereço: ${paciente.endereco}\nObservações: ${paciente.obs}`;
+    const dadosPaciente = `\nCódigo: ${paciente.cod}\nNome: ${paciente.nome}\nData de nascimento: ${paciente.data}\nEndereço: ${paciente.endereco}\nObservações: ${paciente.obs}`;
     alert(dadosPaciente);
 }
 
@@ -41,6 +41,8 @@ btnCadastrar.addEventListener("click",()=>{
     for(let z = 0; z <= listaDePacientes.items.length; z++){
         cod = z
     }
+
+    
 
     objPaciente.cod = cod
     objPaciente.nome = prompt("Qual o nome do paciente?") 
@@ -67,14 +69,13 @@ btnEditar.addEventListener("click", ()=>{
         mostrarDados(listaDePacientes.items[codPaciente]);
         const confirma = confirm("Quer alterar os dados do paciente?")
         if(confirma){
-            const paciente = listaDePacientes.items[codPaciente];
-            
+            let paciente = listaDePacientes.items[codPaciente];
+
             paciente.nome = prompt("Qual o nome do paciente?")
             paciente.data = prompt("Qual a data de nascimento do paciente?");
             paciente.endereco = prompt("Qual o endereço do paciente?");
             paciente.obs = prompt("Observações:");
             if(paciente.nome == '' || paciente.data == '' || paciente.endereco == ''){
-
                 alert("Insira todos os dados!")
             }else{
                 mostrarDados(paciente);
@@ -90,8 +91,16 @@ btnListar.addEventListener("click",()=>{
     if (listaDePacientes.isEmpty()){
         alert("Nenhum paciente cadastrado... :/")
     }else{
-        for (let z = 0; z <= listaDePacientes.items.length; z++){
-            mostrarDados(listaDePacientes.items[z]);
+        for (const element of listaDePacientes.items){
+            console.log(listaDePacientes.items);
+            
+            const lista = listaDePacientes.items;
+            const ultimoPaciente = lista.length;
+            
+            mostrarDados(element);
+            if (lista[ultimoPaciente - 1].cod == ultimoPaciente){
+                lista[ultimoPaciente - 1].cod--;
+            }
         }
     }
 })
@@ -105,12 +114,11 @@ btnExcluir.addEventListener("click", ()=> {
         const confirmar = confirm(`Você tem certeza que quer excluir esse paciente?`)
     
         if(confirmar){
-            let index = listaDePacientes.items.indexOf(codPaciente);
-            listaDePacientes.items.splice(index,1)
+            listaDePacientes.items.splice(codPaciente,1)
             alert(`Paciente ${codPaciente} excluído!`)
         }
 
     }else{
         alert("Nenhum paciente cadastrado... :/");
     }
-})
+}) 
