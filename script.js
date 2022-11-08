@@ -34,6 +34,7 @@ function mostrarDados(paciente){
     alert(dadosPaciente);
 }
 
+//*primeiro botão
 btnCadastrar.addEventListener("click",()=>{
     const objPaciente = {}
 
@@ -58,11 +59,34 @@ btnCadastrar.addEventListener("click",()=>{
     }
 })
 
+//*terceiro botão
 btnListar.addEventListener("click",()=>{
     if (pilha.isEmpty()){
         alert("Nenhum paciente cadastrado... :/")
     }else{
-        const codPaciente = prompt("Insira o código do paciente:");
+        for (let z = 0; z <= pilha.items.length; z++){
+            mostrarDados(pilha.items[z]);
+        }
+    }
+})
+
+//*quarto botão
+btnExcluir.addEventListener("click", ()=> {
+    if(!pilha.isEmpty()){
+        
+        const codPaciente = prompt("Insira o código do paciente para excluí-lo:");
         mostrarDados(pilha.items[codPaciente]);
+        const confirmar = confirm(`Você tem certeza que quer excluir esse paciente?`)
+    
+        if(confirmar){
+            let index = pilha.items.indexOf(codPaciente);
+            pilha.items.splice(index,1)
+            alert("excluido")
+        }else{
+            alert("n excluido");
+        }
+
+    }else{
+        alert("Nenhum paciente cadastrado... :/");
     }
 })
