@@ -29,9 +29,23 @@ const listaDePacientes = new Stack();
 
 let cod = 0
 
+//*funções
 function mostrarDados(paciente){
     const dadosPaciente = `\nCódigo: ${paciente.cod}\nNome: ${paciente.nome}\nData de nascimento: ${paciente.data}\nEndereço: ${paciente.endereco}\nObservações: ${paciente.obs}`;
     alert(dadosPaciente);
+}
+
+function verficarInfos(obj){
+    obj.nome = prompt("Qual o nome do paciente?");
+    obj.data = prompt("Qual a data de nascimento do paciente?");
+    obj.endereco = prompt("Qual o endereço do paciente?");
+    obj.obs = prompt("Observações:");
+    if (obj.nome == "" || obj.data == "" || obj.endereco == "") {
+        alert("Insira todos os dados!");
+        return false
+    }else{
+        return true
+    }
 }
 
 //*primeiro botão
@@ -42,23 +56,11 @@ btnCadastrar.addEventListener("click",()=>{
         cod = z
     }
 
-    
-
     objPaciente.cod = cod
-    objPaciente.nome = prompt("Qual o nome do paciente?") 
-    objPaciente.data = prompt("Qual a data de nascimento do paciente?")
-    objPaciente.endereco = prompt("Qual o endereço do paciente?")
-    objPaciente.obs = prompt("Observações:");
-
-    if(objPaciente.nome == '' || objPaciente.data == '' || objPaciente.endereco == ''){
-
-        alert("Insira todos os dados!")
-    }else{
-        mostrarDados(objPaciente);
-
-        listaDePacientes.push(objPaciente);
-        //console.log(listaDePacientes.items[cod])
-    }
+    if(verficarInfos(objPaciente)){
+        mostrarDados(objPaciente)
+        listaDePacientes.push(objPaciente)
+    } 
 })
 
 //*segundo botão
@@ -70,15 +72,8 @@ btnEditar.addEventListener("click", ()=>{
         const confirma = confirm("Quer alterar os dados do paciente?")
         if(confirma){
             let paciente = listaDePacientes.items[codPaciente];
-
-            paciente.nome = prompt("Qual o nome do paciente?")
-            paciente.data = prompt("Qual a data de nascimento do paciente?");
-            paciente.endereco = prompt("Qual o endereço do paciente?");
-            paciente.obs = prompt("Observações:");
-            if(paciente.nome == '' || paciente.data == '' || paciente.endereco == ''){
-                alert("Insira todos os dados!")
-            }else{
-                mostrarDados(paciente);
+            if(verficarInfos(paciente)){
+                mostrarDados(paciente)
             }
         }
     }else{
