@@ -1,0 +1,27 @@
+Olá, Tudo bem?
+
+Como a vaga é para desenvolvimento em JAVA e eu não sei programar em JAVA, fiz com JavaScript mesmo, minha área de estudo é o front-end, minha linguagem principal é o JavaScript, tambem não usei o Eclipse, usei o VS Code. O repositório do projeto tambem está no meu github: https://github.com/GabrielBursi/Cadastro-de-paciente
+
+Mas mesmo assim estou enviando meu projeto e meu currículo pois fiquei animado em participar desse processo seletivo, eu queria muito entrar na Lode, é uma empresa exemplo de tecnologia e seria muito legal se minha primeira experiência profissional fosse na Lode.
+
+Espero que de certo e que vocês gostem de mim :)
+
+-Sobre mim
+
+Apaixonado por tecnologia, estou no primeiro ano da faculdade de Eng. De Software, sou
+extremamente curioso e tenho muita vontade de aprender, sou proativo e comunicativo e
+quero começar nesse vasto e infinito mundo da programação para adquirir conhecimento
+profissional e assim construir algo incrível para ajudar pessoas.
+
+-Objetivo
+Programação Web Front-End
+
+-Tecnologias
+
+Linguagens de Marcação e Estilo: HTML5, BOOTSTRAP, CSS3, SASS
+Linguagens de programação: Javascript ES6+, PHP e SQL
+Bibliotecas/Frameworks: React, Laravel
+Banco de Dados: MySQL
+Controle de versão: Git
+Editor: Figma
+SO: Windows 
